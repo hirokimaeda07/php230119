@@ -1,10 +1,12 @@
 <!-- 商品詳細画面 -->
 
-<?php require 'menu.php'; ?>
+<?php require 'menu.php';
+include('../functions.php');
+$pdo = connect_to_db();
+?>
 
 <?php
-$pdo=new PDO('mysql:host=localhost;dbname=shop;charset=utf8', 
-	'staff', 'password');
+//$pdo=new PDO('mysql:host=localhost;dbname=shop;charset=utf8','staff', 'password');
 
 	//商品番号の商品情報を取得
 	$sql=$pdo->prepare('select * from product where id=?');

@@ -1,6 +1,9 @@
 <!-- 商品一覧ページ -->
 
-<?php require 'menu.php'; ?>
+<?php require 'menu.php'; 
+include('../functions.php');
+$pdo = connect_to_db();
+?>
 
 <form action="product.php" method="post">
 	商品検索
@@ -13,7 +16,7 @@
 echo '<table>';
 echo '<tr><th>商品番号</th><th>商品名</th><th>価格</th></tr>';
 
-$pdo=new PDO('mysql:host=localhost;dbname=shop;charset=utf8', 'staff', 'password');
+//$pdo=new PDO('mysql:host=localhost;dbname=shop;charset=utf8', 'staff', 'password');
 
 //リクエストパラメーターに検索キーワードが含まれるときには、商品の検索を実行。
 if (isset($_REQUEST['keyword'])) {

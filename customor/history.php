@@ -1,12 +1,14 @@
 <!-- 購入後の一覧画面 -->
 
 <?php session_start(); ?>
-<?php require 'menu.php'; ?>
+<?php require 'menu.php';
+include('../functions.php');
+$pdo = connect_to_db();
+?>
 
 <?php
 if (isset($_SESSION['customer'])) {
-	$pdo=new PDO('mysql:host=localhost;dbname=shop;charset=utf8', 
-		'staff', 'password');
+	//$pdo=new PDO('mysql:host=localhost;dbname=shop;charset=utf8','staff', 'password');
 	$sql_purchase=$pdo->prepare(
 		'select * from purchase where customer_id=? order by id desc');
 	$sql_purchase->execute([$_SESSION['customer']['id']]);

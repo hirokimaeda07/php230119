@@ -1,13 +1,16 @@
 <!-- お気に入り登録の画面 -->
 
 <?php session_start(); ?>
-<?php require 'menu.php'; ?>
+<?php require 'menu.php'; 
+include('../functions.php');
+$pdo = connect_to_db();
+?>
 
 <?php
 //お気に入りは、ログインしている必要あり。
 if (isset($_SESSION['customer'])) {
-	$pdo=new PDO('mysql:host=localhost;dbname=shop;charset=utf8', 
-		'staff', 'password');
+	//$pdo=new PDO('mysql:host=localhost;dbname=shop;charset=utf8','staff', 'password');
+	
 	//favorite　テーブルに登録
 	//ログインしていたら、insertで	sqlを実行
 	$sql=$pdo->prepare('insert into favorite values(?,?)');

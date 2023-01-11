@@ -1,13 +1,15 @@
 <!-- お気に入り削除の処理 -->
 
 <?php session_start(); ?>
-<?php require 'menu.php'; ?>
+<?php require 'menu.php';
+include('../functions.php');
+
+?>
 
 <?php
 if (isset($_SESSION['customer'])) {
-	$pdo=new PDO('mysql:host=localhost;dbname=shop;charset=utf8', 
-		'staff', 'password');
-
+	//$pdo=new PDO('mysql:host=localhost;dbname=shop;charset=utf8', 'staff', 'password');
+$pdo = connect_to_db();
 	$sql=$pdo->prepare(
 	//削除はfavoritテーブルから、指定した顧客番号と商品番号の行を削除する
 		'delete from favorite where customer_id=? and product_id=?');

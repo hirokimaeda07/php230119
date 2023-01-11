@@ -1,12 +1,15 @@
 <!-- 会員登録、登録内容修正後の画面 -->
 
 <?php session_start(); ?>
-<?php require 'menu.php'; ?>
+<?php require 'menu.php';
+//DB接続
+include('../functions.php');
+$pdo = connect_to_db();
+?>
 
 <?php
-//データベースへ接続
-$pdo=new PDO('mysql:host=localhost;dbname=shop;charset=utf8', 
-	'staff', 'password');
+//データベースへ接続 ⇒　5行目でDB接続
+//$pdo=new PDO('mysql:host=localhost;dbname=shop;charset=utf8','staff', 'password');
 
 if (isset($_SESSION['customer'])) {
 	$id=$_SESSION['customer']['id'];

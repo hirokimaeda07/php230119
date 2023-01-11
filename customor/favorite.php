@@ -1,13 +1,16 @@
 <!-- お気に入りの一覧 -->
 
 <?php
+//データベース接続
+include('../functions.php');
+$pdo = connect_to_db();
+
 //ログインの確認
 if (isset($_SESSION['customer'])) {
 	echo '<table>';
 	echo '<tr><th>商品番号</th><th>商品名</th>';
 	echo '<th>価格</th><th></th></tr>';
-	$pdo=new PDO('mysql:host=localhost;dbname=shop;charset=utf8', 
-		'staff', 'password');
+	//$pdo=new PDO('mysql:host=localhost;dbname=shop;charset=utf8', staff', 'password');
 
 	//favoritから、顧客番号、商品番号を取得
 	//productから、商品番号、商品名、価格を取得

@@ -4,8 +4,10 @@
 <?php require 'menu.php'; ?>
 
 <?php
-$pdo=new PDO('mysql:host=localhost;dbname=shop;charset=utf8', 
-	'staff', 'password');
+include('../functions.php');
+$pdo = connect_to_db();
+
+//$pdo=new PDO('mysql:host=localhost;dbname=shop;charset=utf8','staff', 'password');
 $purchase_id=1;
 foreach ($pdo->query('select max(id) from purchase') as $row) {
 	$purchase_id=$row['max(id)']+1;

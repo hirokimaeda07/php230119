@@ -1,15 +1,17 @@
 <!-- ログイン成功、ログイン失敗時の表示画面 -->
 <?php session_start(); ?>
 
-<?php require 'menu.php'; ?>
+<?php require 'menu.php'; 
+include('../functions.php');
+$pdo = connect_to_db();
+?>
 
 <?php
 //unsetで、既にログイン中の同名ユーザーがいたら削除する
 unset($_SESSION['customer']);
 
-//PHPとデータベースを接続
-$pdo=new PDO('mysql:host=localhost;dbname=shop;charset=utf8', 
-	'staff', 'password');
+//PHPとデータベースを接続 ⇒5行目で接続をしてる
+//$pdo=new PDO('mysql:host=localhost;dbname=shop;charset=utf8', 'staff', 'password');
 
 //selecto以降で、loginとpasswordの組み合わせを検索する
 $sql=$pdo->prepare('select * from customer where login=? and password=?');
