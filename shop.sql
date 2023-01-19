@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2022-12-28 12:39:33
+-- 生成日時: 2023-01-19 15:27:55
 -- サーバのバージョン： 10.4.27-MariaDB
 -- PHP のバージョン: 8.1.12
 
@@ -44,7 +44,8 @@ INSERT INTO `customer` (`id`, `name`, `address`, `login`, `password`) VALUES
 (2, '大阪くいだおれ', '大阪府食い倒れ地区', 'oosaka', 'oosaka'),
 (3, '広島カープ', '広島県カープ町', 'hiroshima', 'hiroshima'),
 (4, '前田弘樹', '福岡県福岡市のどこか', 'maeda', 'maeda'),
-(5, '日本太郎', '日本国福岡の中央', 'nippon', 'nippon');
+(5, '日本太郎', '日本国福岡の中央', 'nippon', 'nippon'),
+(6, '前田', '室見', 'himada', 'himada');
 
 -- --------------------------------------------------------
 
@@ -62,11 +63,8 @@ CREATE TABLE `favorite` (
 --
 
 INSERT INTO `favorite` (`customer_id`, `product_id`) VALUES
-(4, 4),
-(4, 6),
-(4, 7),
-(5, 6),
-(5, 7);
+(4, 2),
+(4, 5);
 
 -- --------------------------------------------------------
 
@@ -85,13 +83,23 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `name`, `price`) VALUES
-(1, '釣り竿', 7000),
-(2, 'リール', 5000),
+(1, '釣りさお', 7200),
+(2, 'リール', 50000),
 (3, 'えぎ', 800),
 (4, '糸', 220),
 (5, '重り', 250),
 (6, 'バケツ', 600),
-(7, 'プライヤー', 2100);
+(7, 'プライヤー', 2100),
+(8, 'ウキ', 250),
+(9, 'アミ', 250),
+(10, '餌', 600),
+(11, 'バケツ大きいの', 4000),
+(12, 'バケツ大きいの', 4000),
+(13, 'バケツ大きいの', 4000),
+(14, 'バケツ大きいの', 4000),
+(15, 'えさを追加購入', 400),
+(16, '新規追加', 400),
+(17, '新規追加', 400);
 
 -- --------------------------------------------------------
 
@@ -111,6 +119,8 @@ CREATE TABLE `purchase` (
 INSERT INTO `purchase` (`id`, `customer_id`) VALUES
 (1, 4),
 (2, 4),
+(4, 4),
+(5, 4),
 (3, 5);
 
 -- --------------------------------------------------------
@@ -138,7 +148,8 @@ INSERT INTO `purchase_detail` (`purchase_id`, `product_id`, `count`) VALUES
 (3, 1, 1),
 (3, 3, 1),
 (3, 6, 8),
-(3, 7, 1);
+(3, 7, 1),
+(4, 1, 1);
 
 --
 -- ダンプしたテーブルのインデックス
@@ -186,13 +197,13 @@ ALTER TABLE `purchase_detail`
 -- テーブルの AUTO_INCREMENT `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- テーブルの AUTO_INCREMENT `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- ダンプしたテーブルの制約
